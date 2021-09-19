@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+   <record id="view_wiki_pycode_form" model="ir.ui.view">
+        <field name="name">document.page.pycode.form</field>
+        <field name="model">document.page</field>
+        <field name="inherit_id" ref="document_page.view_wiki_form"/>
+        <field name="arch" type="xml">
+            <field name="content" position="replace">
+                    <field name="content" required="1" attrs="{'invisible': [('doc_type','!=','pycode')]}"/>
+                    <!--<field name="content" widget="html" placeholder="e.g. Once upon a time..." required="1" options="{'safe': True}" attrs="{'invisible': [('doc_type','!=','html')]}"/>-->
+            </field>
+            
+        </field>
+    </record>
+</odoo>
