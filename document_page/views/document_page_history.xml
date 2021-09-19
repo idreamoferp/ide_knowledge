@@ -56,19 +56,10 @@
                     </group>
                     <notebook>
                         <page name="content" string="Content">
-                            <field
-                                name="content"
-                                widget="html"
-                                placeholder="e.g. Once upon a time..."
-                                options="{'safe': True}"
-                            />
+                            <field name="content" widget="html" placeholder="e.g. Once upon a time..." options="{'safe': True}" />
                         </page>
                         <page name="diff" string="Changes">
-                            <field
-                                name="diff"
-                                widget="html"
-                                style="overflow-x: scroll"
-                            />
+                            <field name="diff" widget="html" style="overflow-x: scroll" />
                         </page>
                     </notebook>
                 </sheet>
