@@ -1,1 +1,1 @@
-from . import knowledge
+from . import document_page
