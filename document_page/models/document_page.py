@@ -16,86 +16,21 @@ class DocumentPage(models.Model):
     _HTML_WIDGET_DEFAULT_VALUE = "<p><br></p>"
 
     name = fields.Char("Title", required=True)
-    type = fields.Selection(
-        [("content", "Content"), ("category", "Category")],
-        "Type",
-        help="Page type",
-        default="content",
-    )
+    type = fields.Selection([("content", "Content"), ("category", "Category")],"Type",help="Page type",default="content")
     active = fields.Boolean(default=True)
-    parent_id = fields.Many2one(
-        "document.page", "Category", domain=[("type", "=", "category")]
-    )
+    parent_id = fields.Many2one("document.page", "Category", domain=[("type", "=", "category")])
     child_ids = fields.One2many("document.page", "parent_id", "Children")
-    content = fields.Text(
-        "Content",
-        compute="_compute_content",
-        inverse="_inverse_content",
-        search="_search_content",
-    )
-
-    draft_name = fields.Char(
-        string="Name",
-        help="Name for the changes made",
-        related="history_head.name",
-        readonly=False,
-    )
-
-    draft_summary = fields.Char(
-        string="Summary",
-        help="Describe the changes made",
-        related="history_head.summary",
-        readonly=False,
-    )
-
-    template = fields.Html(
-        "Template",
-        help="Template that will be used as a content template "
-        "for all new page of this category.",
-    )
-    history_head = fields.Many2one(
-        "document.page.history",
-        "HEAD",
-        compute="_compute_history_head",
-        store=True,
-        auto_join=True,
-    )
-    history_ids = fields.One2many(
-        "document.page.history",
-        "page_id",
-        "History",
-        order="create_date DESC",
-        readonly=True,
-    )
+    content = fields.Text("Content",compute="_compute_content",inverse="_inverse_content",search="_search_content",)
+    draft_name = fields.Char(string="Name",help="Name for the changes made",related="history_head.name",readonly=False,)
+    draft_summary = fields.Char(string="Summary",help="Describe the changes made",related="history_head.summary",readonly=False,)
+    template = fields.Html("Template",help="Template that will be used as a content template ""for all new page of this category.",)
+    history_head = fields.Many2one("document.page.history","HEAD",compute="_compute_history_head",store=True,auto_join=True,)
+    history_ids = fields.One2many("document.page.history","page_id","History",order="create_date DESC",readonly=True,)
     menu_id = fields.Many2one("ir.ui.menu", "Menu", readonly=True)
-    content_date = fields.Datetime(
-        "Last Contribution Date",
-        related="history_head.create_date",
-        store=True,
-        index=True,
-        readonly=True,
-    )
-    content_uid = fields.Many2one(
-        "res.users",
-        "Last Contributor",
-        related="history_head.create_uid",
-        store=True,
-        index=True,
-        readonly=True,
-    )
-    company_id = fields.Many2one(
-        "res.company",
-        "Company",
-        help="If set, page is accessible only from this company",
-        index=True,
-        ondelete="cascade",
-        default=lambda self: self.env.company,
-    )
-    backend_url = fields.Char(
-        string="Backend URL",
-        help="Use it to link resources univocally",
-        compute="_compute_backend_url",
-    )
+    content_date = fields.Datetime("Last Contribution Date",related="history_head.create_date",store=True,index=True,readonly=True,)
+    content_uid = fields.Many2one("res.users","Last Contributor",related="history_head.create_uid",store=True,index=True,readonly=True,)
+    company_id = fields.Many2one("res.company","Company",help="If set, page is accessible only from this company",index=True,ondelete="cascade",default=lambda self: self.env.company,)
+    backend_url = fields.Char(string="Backend URL",help="Use it to link resources univocally",compute="_compute_backend_url",)
 
     @api.depends("menu_id", "parent_id.menu_id")
     def _compute_backend_url(self):
