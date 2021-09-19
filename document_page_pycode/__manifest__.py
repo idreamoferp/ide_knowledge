@@ -1,0 +1,16 @@
+{
+    "name" : "Document Page - PyCode",
+    "version" : "0.1",
+    "author" : "Justin Mangini",
+    'category': 'Knowledge',
+    "depends" : ['document_page_type'],
+    "init_xml" : [],
+    "demo_xml" : [],
+    "description": "Adds Python Code machine instructions to the document control system.",
+    'data': ['views/views.xml', 'data/data.xml'],
+    'test': [],
+    'installable': True,
+    'auto_install': False,
+    'certificate': '',
+    'images': [''],
+}
