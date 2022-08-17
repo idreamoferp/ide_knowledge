@@ -3,9 +3,9 @@
 
 {
     "name": "Document Page Approval",
-    "version": "13.0.1.3.0",
+    "version": "13.0.1.3.1",
     "author": "Savoir-faire Linux, Odoo Community Association (OCA)",
-    "website": "http://www.savoirfairelinux.com",
+    "website": "https://github.com/OCA/knowledge",
     "license": "AGPL-3",
     "category": "Knowledge Management",
     "depends": ["document_page", "mail"],

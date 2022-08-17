@@ -5,9 +5,10 @@
     "name": "Atachment Category",
     "summary": """
         Adds a document category to help classification""",
-    "version": "13.0.1.0.0",
+    "version": "13.0.1.0.1",
     "license": "AGPL-3",
     "author": "ACSONE SA/NV,Odoo Community Association (OCA)",
+    "website": "https://github.com/OCA/knowledge",
     "depends": ["base"],
     "data": [
         "views/ir_attachment.xml",
