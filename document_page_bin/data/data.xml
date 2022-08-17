@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<odoo>
+	<record id="document_page_group_pycode" model="document.page">
+        <field name="name">Machine Instruction</field>
+        <field name="type">category</field>
+        <field name="template">
+<![CDATA[
+def preflight_checks(self):
+    #any process to validate the carrier before any process is preformed
+    return True
+    
+def process(self):
+    #all processing of the carrier
+    return True
+    
+def postflight_checks(self):
+    #any process to validate the carrier after all processing has been preformed
+    return True
+    
+]]>
+        </field>
+      </record>
+</odoo>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="document_page_form" model="ir.ui.view">
+        <field name="name">document.page.bin.form</field>
+        <field name="model">document.page</field>
+        <field name="inherit_id" ref="document_page.view_wiki_form"/>
+        <field name="arch" type="xml">
+            <field name="content" position="after">
+                <field name="attachment" attrs="{'invisible': [('doc_type','!=','bin')], 'required':[('doc_type','=','bin')]}"/>
+            </field>
+        </field>
+    </record>
+    
+    <record id="document_page_history_form" model="ir.ui.view">
+        <field name="name">document.page.bin.form</field>
+        <field name="model">document.page.history</field>
+        <field name="inherit_id" ref="document_page.wiki_history_form"/>
+        <field name="arch" type="xml">
+            <field name="content" position="after">
+                <field name="attachment" readonly="1" attrs="{'invisible': [('doc_type','!=','bin')]}"/>
+            </field>
+        </field>
+    </record>
+    
+</odoo>
